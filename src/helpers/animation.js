@@ -12,7 +12,7 @@ import { minimaxRoot } from "./ai";
 
 //---------------------------------------------------------//
 export function touchDown(x, y) {
-  console.log(`animation.js::touchDown::x=${x}, y=${y}`);
+  // console.log(`animation.js::touchDown::x=${x}, y=${y}`);
 
   switch (store.state.dragStatus) {
     case "start":
@@ -36,7 +36,7 @@ export function touchDown(x, y) {
         return;
       }
 
-      console.log("animation.js::touchDown::tileId=", tileId);
+      // console.log("animation.js::touchDown::tileId=", tileId);
 
       if (tileId >= 0) {
         // a tile is hit...
@@ -146,7 +146,7 @@ export function dragTilesToPos() {
 //-----------------------------------------------------------------------------//
 
 function dragTo(x, y) {
-  console.log(`animation.js::dragTo::x=${x}, y=${y}`);
+  // console.log(`animation.js::dragTo::x=${x}, y=${y}`);
   // console.log(
   //   `animation.js::dragTo::store.state.dragTileId=${store.state.dragTileId}`
   // );
@@ -174,7 +174,7 @@ function dragTo(x, y) {
 //-----------------------------------------------------------------------------//
 
 function dragToStartPos() {
-  console.log("animation.js::dragToStartPos");
+  // console.log("animation.js::dragToStartPos");
   const tile = document.getElementById(store.state.dragTileId);
   // console.log(`animation.js::dragToStartPos::tile=`, tile);
   // console.log(
@@ -196,7 +196,7 @@ function dragToStartPos() {
 //-----------------------------------------------------------------------------//
 
 function dropTo(x, y) {
-  console.log(`animation.js::dropTo::x=${x}, y=${y}`);
+  // console.log(`animation.js::dropTo::x=${x}, y=${y}`);
   const tile = document.getElementById(store.state.dragTileId);
   // console.log(`animation.js::dragToStartPos::tile=`, tile);
 
@@ -206,16 +206,16 @@ function dropTo(x, y) {
     store.state.boardOffsetX,
     store.state.boardOffsetY
   );
-  console.log(`animation.js::dropTo::coords=(${coords.x}, ${coords.y})`);
+  // console.log(`animation.js::dropTo::coords=(${coords.x}, ${coords.y})`);
   if (coords.x < 0 || coords.y < 0 || coords.x > 7 || coords.y > 7) {
     // dropped outside
     dragToStartPos();
   }
 
   const pageCoords = chessToPageCoords(coords);
-  console.log(
-    `animation.js::dropTo::pageCoords=(${pageCoords.x}, ${pageCoords.y})`
-  );
+  // console.log(
+  //   `animation.js::dropTo::pageCoords=(${pageCoords.x}, ${pageCoords.y})`
+  // );
   tile.velocity(
     { left: pageCoords.x + "px", top: pageCoords.y + "px" },
     { duration: 100, easing: "easeOutSine" }
@@ -257,14 +257,14 @@ function dragOpponent(tileId, coordsTo) {
 //-----------------------------------------------------------------------------//
 
 function removeTile(coords) {
-  console.log(`animation.js::removeTile::coords=(${coords.x}, ${coords.y})`);
+  // console.log(`animation.js::removeTile::coords=(${coords.x}, ${coords.y})`);
   const tileId = getTileIdFromCoords(coords.x, coords.y);
   // console.log("store.js::removeTile::tileId=", tileId);
 
   if (tileId === null) {
-    console.log(
-      `ERROR: animation.js::removeTile: tile (${x}, ${y}) not found!`
-    );
+    // console.log(
+    //   `ERROR: animation.js::removeTile: tile (${x}, ${y}) not found!`
+    // );
     return;
   }
   const tile = document.getElementById(tileId);
@@ -313,7 +313,7 @@ function removeTile(coords) {
 //-----------------------------------------------------------------------------//
 
 function tryMove(coords) {
-  console.log(`animation.js::tryMove::coords=(${coords.x}, ${coords.y})`);
+  // console.log(`animation.js::tryMove::coords=(${coords.x}, ${coords.y})`);
 
   // if game over, return...
   if (isGameOver()) return false;
@@ -336,18 +336,18 @@ function tryMove(coords) {
     x: store.state.dragFromX,
     y: store.state.dragFromY
   });
-  console.log(
-    `animation.js::tryMove::dragFrom=(${store.state.dragFromX}, ${store.state.dragFromY})`
-  );
-  console.log("animation.js::tryMove::sanFrom=", sanFrom);
+  // console.log(
+  //   `animation.js::tryMove::dragFrom=(${store.state.dragFromX}, ${store.state.dragFromY})`
+  // );
+  // console.log("animation.js::tryMove::sanFrom=", sanFrom);
 
   const sanTo = coordsToSan(mirrorCoords(coords));
-  console.log("animation.js::tryMove::sanTo=", sanTo);
+  // console.log("animation.js::tryMove::sanTo=", sanTo);
 
   // Try move...
   const tileFrom = store.state.chess.get(sanFrom);
   const tileTo = store.state.chess.get(sanTo);
-  console.log("animation.js::tryMove::tileFrom=", tileFrom);
+  // console.log("animation.js::tryMove::tileFrom=", tileFrom);
   if (!tileFrom) {
     Notify.create({
       message: "ERROR: No tile selected in move!",
@@ -366,9 +366,9 @@ function tryMove(coords) {
   // if capture...
   if (tileTo) moveObj.captured = tileTo;
 
-  console.log("animation.js::tryMove::moveObj=", moveObj);
+  // console.log("animation.js::tryMove::moveObj=", moveObj);
   const move = store.state.chess.move(moveObj);
-  console.log("animation.js::tryMove::move=", move);
+  // console.log("animation.js::tryMove::move=", move);
 
   if (move) {
     if (move.flags.indexOf("e") > -1) {
@@ -403,7 +403,7 @@ function tryMove(coords) {
     store.setTile(store.state.dragTileId, mirrorCoords(coords));
 
     // DEBUG
-    store.logTiles();
+    // store.logTiles();
 
     setTimeout(() => {
       if (store.state.chess.in_check()) {
@@ -428,7 +428,7 @@ function tryMove(coords) {
 //-----------------------------------------------------------------------------//
 
 export function opponentMove() {
-  console.log("animation.js::opponentMove");
+  // console.log("animation.js::opponentMove");
   if (isGameOver()) return;
 
   // find best move according to level of difficulty...
@@ -441,7 +441,7 @@ export function opponentMove() {
 
   // move opponent's tile...
   const opponentsMove = store.state.chess.move(bestMove);
-  console.log("animation.js::opponentMove::opponentMove=", opponentsMove);
+  // console.log("animation.js::opponentMove::opponentMove=", opponentsMove);
 
   if (!opponentsMove) {
     // console.log(
@@ -474,12 +474,12 @@ export function opponentMove() {
   // Move opponent's tile
   const opCoordsFrom = sanToCoords(opponentsMove.from);
   const opponentsTileId = getTileIdFromCoords(opCoordsFrom.x, opCoordsFrom.y);
-  console.log("animation.js::opponentMove::opponentsTileId=", opponentsTileId);
+  // console.log("animation.js::opponentMove::opponentsTileId=", opponentsTileId);
   dragOpponent(opponentsTileId, opCoordsTo);
   store.setTile(opponentsTileId, opCoordsTo);
-  console.log(
-    `animation.js::opponentMove::store.setTile::id=${opponentsTileId}, x=${opCoordsTo.x}, y=${opCoordsTo.y}`
-  );
+  // console.log(
+  //   `animation.js::opponentMove::store.setTile::id=${opponentsTileId}, x=${opCoordsTo.x}, y=${opCoordsTo.y}`
+  // );
 
   // check if castling... king has already been moved... move rook...
   let newRookCoords, rookTileId;
@@ -524,7 +524,7 @@ export function opponentMove() {
   }
 
   // DEBUG
-  store.logTiles();
+  // store.logTiles();
 
   setTimeout(() => {
     if (store.state.chess.in_check()) {
@@ -620,7 +620,7 @@ function castling(side) {
   const moveSan = side === "kingside" ? "O-O" : "O-O-O";
   // console.log("animation.js::castling::moveSan=", moveSan);
   const move = store.state.chess.move(moveSan);
-  console.log("animation.js::castling::move=", move);
+  // console.log("animation.js::castling::move=", move);
 
   let kingId, rookId, kingX, rookX, posY;
   if (move) {
@@ -659,7 +659,7 @@ function castling(side) {
     store.setTile(rookId, { x: rookX, y: posY }); // move rook to king's pos
 
     // DEBUG
-    store.logTiles();
+    // store.logTiles();
 
     setTimeout(() => {
       if (store.state.chess.in_check()) {
@@ -702,7 +702,7 @@ export function castlingKingside() {
 //-----------------------------------------------------------------------------//
 
 export function undoMove() {
-  console.log("animation.js::undoMove");
+  // console.log("animation.js::undoMove");
   if (store.state.chess.game_over()) {
     Notify.create({
       message: "Game over, can't undo move!",
@@ -732,9 +732,9 @@ export function undoMove() {
 //-----------------------------------------------------------------------------//
 
 function undoHafeMove() {
-  console.log("animation.js::undoHalfMove");
+  // console.log("animation.js::undoHalfMove");
   const move = store.state.chess.undo();
-  console.log("animation.js::undoHalfMove::move=", move);
+  // console.log("animation.js::undoHalfMove::move=", move);
   if (!move) {
     Notify.create({
       message: "Nothing to undo!",
@@ -799,13 +799,13 @@ function undoHafeMove() {
   }
 
   // DEBUG
-  store.logTiles();
+  // store.logTiles();
 }
 
 //-----------------------------------------------------------------------------//
 
 function undoCastling(color, side) {
-  console.log(`animation.js::undoCastling::color=${color}, side=${side}`);
+  // console.log(`animation.js::undoCastling::color=${color}, side=${side}`);
   let kingId, rookId, kingCoords, rookCoords;
   if (color === "w") {
     kingId = 28;
@@ -856,7 +856,7 @@ function undoCastling(color, side) {
 //-----------------------------------------------------------------------------//
 
 export function switchBoard() {
-  console.log("animation.js::switchBoard");
+  // console.log("animation.js::switchBoard");
 
   let src;
   const board = document.getElementById("board");

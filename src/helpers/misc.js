@@ -66,11 +66,11 @@ export function initTiles() {
 // fieled x (left) and y (top), starting at (0, 0).
 // Mirrored if player's color is black...
 export function getTileIdFromCoords(x, y) {
-  console.log(`misc.js::getTileIdFromCoords::x=${x}, y=${y}`);
+  // console.log(`misc.js::getTileIdFromCoords::x=${x}, y=${y}`);
 
   for (let i = 0; i < 32; i++) {
     if (store.state.tiles[i].x === x && store.state.tiles[i].y === y) {
-      console.log(`misc.js::getTileIdFromCoords::returned TileId=${i}`);
+      // console.log(`misc.js::getTileIdFromCoords::returned TileId=${i}`);
       return i;
     }
   }

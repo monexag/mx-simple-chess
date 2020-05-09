@@ -186,9 +186,9 @@ export default {
     //--------------------------------------------------------//
 
     changeColor(value) {
-      console.log("Menu.vue::changeColor::value=", value);
+      // console.log("Menu.vue::changeColor::value=", value);
       store.setPlayersColor(value);
-      // switchBoard();
+      switchBoard();
       this.handleRestart();
       store.logTiles();
     },

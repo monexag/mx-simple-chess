@@ -5,7 +5,7 @@ export const FEN_START_POS =
 export const FEN_EMPTY_POS = "8/8/8/8/8/8/8/8";
 
 export var store = {
-  debug: true,
+  debug: false,
 
   state: {
     // material and layout/position
@@ -101,7 +101,7 @@ export var store = {
     if (ascii === chessAscii) {
       console.log("Representations are IDENTICAL!");
     } else {
-      console.log("Representations are NOT identical!");
+      console.log("Representations are !!!!! NOT !!!!! identical!");
     }
   },
 
