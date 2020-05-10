@@ -143,6 +143,13 @@
       <q-item>
         &copy; Copyright 2020 Monex AG, Liechtenstein
       </q-item>
+      <q-item>
+        <a
+          href="https://www.monex.li/en/global/dsk/dsk-mobile-apps/"
+          target="_blank"
+          >Privacy Policy for Mobile Apps</a
+        >
+      </q-item>
     </q-list>
   </div>
 </template>
@@ -190,7 +197,7 @@ export default {
       store.setPlayersColor(value);
       switchBoard();
       this.handleRestart();
-      store.logTiles();
+      // store.logTiles();
     },
 
     //--------------------------------------------------------//
