@@ -4,13 +4,19 @@ A simple chess game inspired by [Lauri Hartikka](https://www.freecodecamp.org/ne
 
 ## Node Version
 
-MX Simple Chess runs on `node 12.10.0`. Thus set the appropriate node version using `nvm`.
+MX Simple Chess runs on `node 12.10.0`. Thus set the appropriate node version using `nvm`. If run on newer versions the `quasar` command might not be found.
 
 ```bash
 nvm use 12.10.0
 ```
 
 _**Note**: Use `nvm ls` to list installed node versions!_
+
+## Clone reporting
+
+```bash
+git clone https://gitlab.monex.li/monex/mx-simple-chess.git
+```
 
 ## Install the dependencies
 
