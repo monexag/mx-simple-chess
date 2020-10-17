@@ -12,7 +12,7 @@ nvm use 12.10.0
 
 _**Note**: Use `nvm ls` to list installed node versions!_
 
-## Clone reporting
+## Clone Repo
 
 ```bash
 git clone https://gitlab.monex.li/monex/mx-simple-chess.git
