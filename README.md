@@ -15,7 +15,7 @@ _**Note**: Use `nvm ls` to list installed node versions!_
 ## Clone Repo
 
 ```bash
-git clone https://gitlab.monex.li/monex/mx-simple-chess.git
+git clone https://github.com/monexag/mx-simple-chess.git
 ```
 
 ## Install the dependencies
