@@ -1,3 +1,5 @@
+test
+
 # MX Simple Chess (mx-simple-chess)
 
 A simple chess game inspired by [Lauri Hartikka](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/).
