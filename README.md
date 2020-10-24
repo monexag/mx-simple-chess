@@ -2,6 +2,8 @@
 
 A simple chess game inspired by [Lauri Hartikka](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/).
 
+_Version 0.1.0_
+
 ## Node Version
 
 MX Simple Chess runs on `node 12.10.0`. Thus set the appropriate node version using `nvm`. If run on newer versions the `quasar` command might not be found.
