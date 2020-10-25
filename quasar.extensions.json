@@ -31,6 +31,9 @@
         },
         "spa": {
           "iconHash": "d505ac758a812615ca21e6bce1bc74a7"
+        },
+        "electron": {
+          "iconHash": "d505ac758a812615ca21e6bce1bc74a7"
         }
       }
     }

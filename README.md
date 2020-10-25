@@ -2,7 +2,7 @@
 
 A simple chess game inspired by [Lauri Hartikka](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/).
 
-_Version 0.1.2_
+_Version 0.1.3_
 
 ## Node Version
 
@@ -77,6 +77,28 @@ yarn build
 ### Deploy the built SPA
 
 Copy the folder `dist/spa` to a web server and serve the file `index.html`.
+
+### Develop or Build for Mobile
+
+If you want to build for a platform, just replace `dev` by `build` in the following commands.
+
+For Android...
+
+```bash
+quasar dev -m android
+```
+
+For iOS...
+
+```bash
+quasar dev -m ios
+```
+
+For Electron...
+
+```bash
+quasar dev -m electron
+```
 
 ### Customize the configuration
 
