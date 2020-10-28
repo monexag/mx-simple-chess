@@ -4,8 +4,9 @@ import { store } from "./store";
 
 // Tile is the object to hold information about a chess piece.
 // E.g. id (enumaration from 0..31, also index of tiles array),
-// type (r=rook, b=bishop, k=king, q=queen, n=knight, p=pawn,
-// big caps for white pieces, small caps for black), x and y
+// type (br=black rook, bb=black bishop, bk=balck king, bq=black 
+// queen, bn=black knight, bp=black pawn
+// same for wr==white rook etc., x and y
 // for the chess coords starting at (0, 0) in the top left
 // corner of the board. Thus (0, 0) is the top left field
 // no matter what the player's color is.
@@ -21,41 +22,41 @@ export function Tile(id, type, x, y) {
 export function initTiles() {
   // console.log("misc.js::initTiles");
   let t = [];
-  t[0] = new Tile(0, "r", 0, 0);
-  t[1] = new Tile(1, "n", 1, 0);
-  t[2] = new Tile(2, "b", 2, 0);
-  t[3] = new Tile(3, "q", 3, 0);
-  t[4] = new Tile(4, "k", 4, 0);
-  t[5] = new Tile(5, "b", 5, 0);
-  t[6] = new Tile(6, "n", 6, 0);
-  t[7] = new Tile(7, "r", 7, 0);
+  t[0] = new Tile(0, "br", 0, 0);
+  t[1] = new Tile(1, "bn", 1, 0);
+  t[2] = new Tile(2, "bb", 2, 0);
+  t[3] = new Tile(3, "bq", 3, 0);
+  t[4] = new Tile(4, "bk", 4, 0);
+  t[5] = new Tile(5, "bb", 5, 0);
+  t[6] = new Tile(6, "bn", 6, 0);
+  t[7] = new Tile(7, "br", 7, 0);
 
-  t[8] = new Tile(8, "p", 0, 1);
-  t[9] = new Tile(9, "p", 1, 1);
-  t[10] = new Tile(10, "p", 2, 1);
-  t[11] = new Tile(11, "p", 3, 1);
-  t[12] = new Tile(12, "p", 4, 1);
-  t[13] = new Tile(13, "p", 5, 1);
-  t[14] = new Tile(14, "p", 6, 1);
-  t[15] = new Tile(15, "p", 7, 1);
+  t[8] = new Tile(8, "bp", 0, 1);
+  t[9] = new Tile(9, "bp", 1, 1);
+  t[10] = new Tile(10, "bp", 2, 1);
+  t[11] = new Tile(11, "bp", 3, 1);
+  t[12] = new Tile(12, "bp", 4, 1);
+  t[13] = new Tile(13, "bp", 5, 1);
+  t[14] = new Tile(14, "bp", 6, 1);
+  t[15] = new Tile(15, "bp", 7, 1);
 
-  t[16] = new Tile(16, "P", 0, 6);
-  t[17] = new Tile(17, "P", 1, 6);
-  t[18] = new Tile(18, "P", 2, 6);
-  t[19] = new Tile(19, "P", 3, 6);
-  t[20] = new Tile(20, "P", 4, 6);
-  t[21] = new Tile(21, "P", 5, 6);
-  t[22] = new Tile(22, "P", 6, 6);
-  t[23] = new Tile(23, "P", 7, 6);
+  t[16] = new Tile(16, "wp", 0, 6);
+  t[17] = new Tile(17, "wp", 1, 6);
+  t[18] = new Tile(18, "wp", 2, 6);
+  t[19] = new Tile(19, "wp", 3, 6);
+  t[20] = new Tile(20, "wp", 4, 6);
+  t[21] = new Tile(21, "wp", 5, 6);
+  t[22] = new Tile(22, "wp", 6, 6);
+  t[23] = new Tile(23, "wp", 7, 6);
 
-  t[24] = new Tile(24, "R", 0, 7);
-  t[25] = new Tile(25, "N", 1, 7);
-  t[26] = new Tile(26, "B", 2, 7);
-  t[27] = new Tile(27, "Q", 3, 7);
-  t[28] = new Tile(28, "K", 4, 7);
-  t[29] = new Tile(29, "B", 5, 7);
-  t[30] = new Tile(30, "N", 6, 7);
-  t[31] = new Tile(31, "R", 7, 7);
+  t[24] = new Tile(24, "wr", 0, 7);
+  t[25] = new Tile(25, "wn", 1, 7);
+  t[26] = new Tile(26, "wb", 2, 7);
+  t[27] = new Tile(27, "wq", 3, 7);
+  t[28] = new Tile(28, "wk", 4, 7);
+  t[29] = new Tile(29, "wb", 5, 7);
+  t[30] = new Tile(30, "wn", 6, 7);
+  t[31] = new Tile(31, "wr", 7, 7);
 
   return t;
 }

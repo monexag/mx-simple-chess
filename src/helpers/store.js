@@ -111,7 +111,7 @@ export var store = {
     if (this.debug) console.log("DEBUG: store.js::resetPromotedTiles");
     for (let i = 0; i < this.state.promotedTiles.length; i++) {
       const tile = document.getElementById(this.state.promotedTiles[i]);
-      const tileType = this.state.promotedTiles[i] < 16 ? "p" : "P";
+      const tileType = this.state.promotedTiles[i] < 16 ? "bp" : "wp";
       tile.setAttribute("src", "statics/chess/" + tileType + ".svg");
     }
     this.state.promotedTiles = [];

@@ -271,7 +271,7 @@ function removeTile(coords) {
   let xPos, yPos;
 
   // Calc rest position of removed tile, depending on color
-  if (store.state.tiles[tileId].type > "Z") {
+  if (store.state.tiles[tileId].type > "wa") {
     // black tile
     // console.log(
     //   "animation.js::removeTile::store.state.blackTilesRemoved=",
@@ -362,7 +362,7 @@ function tryMove(coords) {
   };
 
   // if promotion...
-  if (tileFrom.type === "p" && coords.y === 0) moveObj.promotion = "q";
+  if (tileFrom.type === "bp" && coords.y === 0) moveObj.promotion = "bq";
   // if capture...
   if (tileTo) moveObj.captured = tileTo;
 
@@ -391,10 +391,10 @@ function tryMove(coords) {
     if (move.flags.indexOf("p") > -1) {
       store.setTileType(
         store.state.dragTileId,
-        store.state.playersColor === "w" ? "Q" : "q"
+        store.state.playersColor === "w" ? "wq" : "bq"
       );
       const tile = document.getElementById(store.state.dragTileId);
-      const tileType = store.state.playersColor === "w" ? "Q" : "q";
+      const tileType = store.state.playersColor === "w" ? "wq" : "bq";
       tile.setAttribute("src", "statics/chess/" + tileType + ".svg");
       store.pushToPromotedTiles(store.state.dragTileId);
     }
@@ -504,10 +504,10 @@ export function opponentMove() {
   if (opponentsMove.flags.indexOf("p") > -1) {
     store.setTileType(
       opponentsTileId,
-      store.state.playersColor === "w" ? "q" : "Q"
+      store.state.playersColor === "w" ? "bq" : "wq"
     );
     const tile = document.getElementById(opponentsTileId);
-    const tileType = store.state.playersColor === "w" ? "q" : "Q";
+    const tileType = store.state.playersColor === "w" ? "bq" : "wq";
     tile.setAttribute("src", "statics/chess/" + tileType + ".svg");
     store.pushToPromotedTiles(opponentsTileId);
   }
@@ -724,14 +724,14 @@ export function undoMove() {
   store.hideDashedBox(1);
 
   // undo opponent's move
-  undoHafeMove();
+  undoHalfeMove();
   // undo player's move
-  undoHafeMove();
+  undoHalfeMove();
 }
 
 //-----------------------------------------------------------------------------//
 
-function undoHafeMove() {
+function undoHalfeMove() {
   // console.log("animation.js::undoHalfMove");
   const move = store.state.chess.undo();
   // console.log("animation.js::undoHalfMove::move=", move);
